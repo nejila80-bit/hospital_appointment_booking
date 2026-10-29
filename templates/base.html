@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CareSlot{% endblock %} · Hospital Appointment Booking</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">✚</span> CareSlot</a>
+  <nav>
+    {% if current_user %}
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      {% if current_user.role in ['patient','admin'] %}<a href="{{ url_for('doctors') }}">Find doctors</a>{% endif %}
+      {% if current_user.role == 'admin' %}<a href="{{ url_for('admin_users') }}">Users</a>{% endif %}
+      <span class="nav-user">{{ current_user.name }} · {{ current_user.role|title }}</span>
+      <a class="nav-cta" href="{{ url_for('logout') }}">Sign out</a>
+    {% else %}
+      <a href="{{ url_for('login') }}">Sign in</a>
+      <a class="nav-cta" href="{{ url_for('register') }}">Create account</a>
+    {% endif %}
+  </nav>
+</header>
+<main class="page">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-stack">{% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}</div>{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+<footer class="footer"><span>CareSlot · College project demo</span><span>For demonstration only · Do not enter real patient information</span></footer>
+</body>
+</html>

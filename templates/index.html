@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Appointments made simpler{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="pulse"></span> A clearer way to care</div>
+    <h1>Healthcare scheduling,<br><span>without the hassle.</span></h1>
+    <p class="hero-lead">Find a doctor, choose a time that works, and keep every appointment organized in one place.</p>
+    <div class="hero-actions"><a class="button primary" href="{{ url_for('register') }}">Get started <span>→</span></a><a class="button secondary" href="{{ url_for('login') }}">Sign in</a></div>
+    <div class="trust-row"><span>✓ Simple booking</span><span>✓ Role-based dashboards</span><span>✓ Appointment tracking</span></div>
+  </div>
+  <div class="hero-visual">
+    <div class="visual-glow"></div>
+    <div class="schedule-card">
+      <div class="schedule-top"><div><small>YOUR HEALTH, IN SYNC</small><h3>Appointment overview</h3></div><span class="calendar-icon">▦</span></div>
+      <div class="mini-date"><span>MON</span><b>12</b><span>OCT</span></div>
+      <div class="appointment-preview"><div class="doctor-avatar teal">MN</div><div class="preview-details"><b>Dr. Maya Nair</b><small>Cardiology · Consultation</small></div><span class="time-pill">09:00 AM</span></div>
+      <div class="appointment-preview"><div class="doctor-avatar purple">AM</div><div class="preview-details"><b>Dr. Arjun Menon</b><small>General Medicine</small></div><span class="time-pill">11:30 AM</span></div>
+      <div class="schedule-note"><span class="check-circle">✓</span><div><b>Everything in one place</b><small>Book, manage, and track visits.</small></div></div>
+    </div>
+    <div class="floating-badge"><span class="badge-icon">✚</span><div><b>{{ doctor_count }} doctors</b><small>Ready to help</small></div></div>
+  </div>
+</section>
+<section class="feature-strip">
+  <div><span class="feature-icon">⌕</span><b>Find the right doctor</b><small>Search by name or specialty.</small></div>
+  <div><span class="feature-icon">▦</span><b>Choose your time</b><small>Browse available appointment slots.</small></div>
+  <div><span class="feature-icon">◷</span><b>Stay up to date</b><small>Track status from your dashboard.</small></div>
+</section>
+<section class="bottom-cta"><div><span class="eyebrow">START IN A FEW CLICKS</span><h2>Your next step starts here.</h2></div><a class="button primary" href="{{ url_for('register') }}">Create a free account →</a></section>
+{% endblock %}

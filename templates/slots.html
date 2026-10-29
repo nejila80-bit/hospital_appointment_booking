@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Book an appointment{% endblock %}
+{% block content %}
+<a class="back-link" href="{{ url_for('doctors') }}">← Back to doctors</a>
+<div class="page-heading"><div><span class="eyebrow">BOOK AN APPOINTMENT</span><h1>{{ doctor.name }}</h1><p class="muted">{{ doctor.specialization }} · {{ doctor.department }}</p></div></div>
+<div class="booking-layout"><section class="panel"><div class="panel-heading"><div><h2>Available times</h2><p>Choose one open slot below.</p></div></div>
+{% if slots %}<div class="available-slots">{% for slot in slots %}<form method="post" action="{{ url_for('book_appointment') }}" class="slot-book-form"><input type="hidden" name="slot_id" value="{{ slot.id }}"><div class="slot-date"><b>{{ slot.slot_date }}</b><small>{{ slot.slot_time }}</small></div><label class="reason-label">Reason for visit<input name="reason" placeholder="Brief reason for consultation" required maxlength="250"></label><button class="button primary" type="submit">Book slot →</button></form>{% endfor %}</div>{% else %}<div class="empty-state"><div class="empty-icon">◷</div><h3>No open slots right now</h3><p>Please check back later or choose another doctor.</p></div>{% endif %}</section>
+<aside class="booking-aside"><span class="feature-icon">✚</span><h3>Before you book</h3><p>Choose a time that works for you and add a short reason so the care team can prepare.</p><div class="info-line">✓ One appointment per available slot</div><div class="info-line">✓ Track request status on your dashboard</div><div class="info-line">✓ Cancel if your plans change</div></aside></div>
+{% endblock %}

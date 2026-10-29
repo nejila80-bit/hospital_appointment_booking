@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Create account{% endblock %}
+{% block content %}
+<div class="auth-layout"><div class="auth-aside"><div class="auth-symbol">✚</div><h2>A healthier way<br>to stay organized.</h2><p>Create a patient account to browse doctors, book appointments, and follow their status from one simple dashboard.</p><div class="aside-stats"><span><b>✓</b> Easy appointment booking</span><span><b>✓</b> Clear status updates</span><span><b>✓</b> Manage your schedule</span></div></div>
+<div class="auth-panel"><span class="eyebrow">JOIN CARESLOT</span><h1>Create your account</h1><p class="muted">Patient accounts are free and quick to set up.</p>
+<form method="post" class="form-stack"><label>Full name<input name="name" placeholder="Your full name" required maxlength="100"></label><label>Email address<input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label><label>Password<input type="password" name="password" placeholder="At least 8 characters" minlength="8" required autocomplete="new-password"></label><button class="button primary full" type="submit">Create account <span>→</span></button></form>
+<div class="auth-switch">Already registered? <a href="{{ url_for('login') }}">Sign in</a></div></div></div>
+{% endblock %}

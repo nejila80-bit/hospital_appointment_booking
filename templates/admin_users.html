@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Manage users{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow">ADMINISTRATION</span><h1>Manage users</h1><p class="muted">Review the registered accounts in this demo system.</p></div><a class="button secondary" href="{{ url_for('dashboard') }}">← Dashboard</a></div>
+<section class="panel"><div class="panel-heading"><div><h2>All accounts</h2><p>{{ users|length }} users in the system</p></div></div>
+<div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Department</th><th>Created</th><th>Action</th></tr></thead><tbody>{% for user in users %}<tr><td><b>{{ user.name }}</b></td><td>{{ user.email }}</td><td><span class="role-tag {{ user.role }}">{{ user.role|title }}</span></td><td>{{ user.department or '—' }}</td><td>{{ user.created_at }}</td><td>{% if user.id != current_user.user_id %}<form method="post" action="{{ url_for('delete_user', user_id=user.id) }}" onsubmit="return confirm('Delete this user and related appointments?')"><button class="link-button danger-text" type="submit">Delete</button></form>{% else %}<span class="muted">Current user</span>{% endif %}</td></tr>{% endfor %}</tbody></table></div></section>
+{% endblock %}

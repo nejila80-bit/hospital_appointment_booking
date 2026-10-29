@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Patient dashboard{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow">PATIENT SPACE</span><h1>Your appointments</h1><p class="muted">Hello {{ current_user.name.split(' ')[0] }}, here's your care schedule at a glance.</p></div><a class="button primary" href="{{ url_for('doctors') }}">+ Book appointment</a></div>
+<div class="dashboard-grid">
+  <div class="stat-card"><span class="stat-icon">▦</span><small>Total appointments</small><strong>{{ appointments|length }}</strong><span class="stat-foot">Across your care schedule</span></div>
+  <div class="stat-card"><span class="stat-icon green">✓</span><small>Confirmed</small><strong>{{ appointments|selectattr('status','equalto','Confirmed')|list|length }}</strong><span class="stat-foot">Scheduled with your doctor</span></div>
+  <div class="stat-card"><span class="stat-icon amber">◷</span><small>Awaiting response</small><strong>{{ appointments|selectattr('status','equalto','Pending')|list|length }}</strong><span class="stat-foot">Requests being reviewed</span></div>
+</div>
+<section class="panel"><div class="panel-heading"><div><h2>Appointment history</h2><p>Review and manage your bookings.</p></div><a class="text-link" href="{{ url_for('doctors') }}">Find a doctor →</a></div>
+{% if appointments %}<div class="table-wrap"><table><thead><tr><th>Doctor</th><th>Date & time</th><th>Department</th><th>Reason</th><th>Status</th><th>Action</th></tr></thead><tbody>
+{% for a in appointments %}<tr><td><b>{{ a.doctor_name }}</b></td><td>{{ a.appointment_date }}<small class="cell-sub">{{ a.appointment_time }}</small></td><td>{{ a.department or '—' }}</td><td>{{ a.reason }}</td><td><span class="status {{ a.status|lower }}">{{ a.status }}</span></td><td>{% if a.status in ['Pending','Confirmed'] %}<form method="post" action="{{ url_for('cancel_appointment', appointment_id=a.id) }}" onsubmit="return confirm('Cancel this appointment?')"><button class="link-button danger-text" type="submit">Cancel</button></form>{% else %}—{% endif %}</td></tr>{% endfor %}
+</tbody></table></div>{% else %}<div class="empty-state"><div class="empty-icon">▦</div><h3>No appointments yet</h3><p>Find a doctor and book your first appointment.</p><a class="button primary" href="{{ url_for('doctors') }}">Browse doctors</a></div>{% endif %}
+</section>
+{% endblock %}
