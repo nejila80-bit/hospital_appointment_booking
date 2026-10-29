@@ -2,7 +2,7 @@
 
 A college-project full-stack web app based on the supplied abstract. It uses **Python + Flask**, **SQLite**, server-rendered HTML/CSS, and role-based sessions. It is designed to run in VS Code and includes a Git/GitHub practice workflow.
 
-> **Important:** This is an educational demo, not a production medical system. Use only fictional data. Before any real deployment, add CSRF protection, stronger secret management, audit logging, rate limiting, backups, privacy/security review, and appropriate healthcare compliance controls.
+> **Important:** This is an educational demo, not a production medical system. Use only fictional data. Before any real deployment, add CSRF protection, secret management, audit logging, rate limiting, backups, privacy/security review, and appropriate healthcare compliance controls.
 
 ## Features
 
