@@ -143,3 +143,5 @@ hospital_appointment_booking/
 └── static/
     └── style.css
 ```
+
+## features
