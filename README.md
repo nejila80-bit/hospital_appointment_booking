@@ -145,3 +145,5 @@ hospital_appointment_booking/
 ```
 
 ## features
+## Tech stack
+python,Flask,SQLite,HTML,CSS,
