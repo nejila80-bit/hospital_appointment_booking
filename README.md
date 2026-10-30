@@ -147,3 +147,6 @@ hospital_appointment_booking/
 ## features
 ## Tech stack
 python,Flask,SQLite,HTML,CSS,
+## How to Run
+pip install -r requirements.txt
+python app.py
