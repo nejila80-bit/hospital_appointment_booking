@@ -155,3 +155,5 @@ Title fron main branch
 =======
 Title fron feature branch
 >>>>>>> feature-docs
+## Version
+v1.0
