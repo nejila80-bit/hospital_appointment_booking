@@ -150,4 +150,8 @@ python,Flask,SQLite,HTML,CSS,
 ## How to Run
 pip install -r requirements.txt
 python app.py
+<<<<<<< HEAD
 Title fron main branch
+=======
+Title fron feature branch
+>>>>>>> feature-docs
